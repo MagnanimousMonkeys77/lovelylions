@@ -213,8 +213,6 @@ class DrawCanvas extends React.Component {
     this.state.erasing ? style.cursor = 'url(eraser.cur) 15 15, auto' : style.cursor = 'crosshair';
     return (
       <div className ="draw-canvas">
-        <button onClick={this.undo.bind(this)}>Undo</button>
-        <button onClick={this.redo.bind(this)}>Redo</button>
         <div>
           <canvas
             style={style}
@@ -230,10 +228,20 @@ class DrawCanvas extends React.Component {
           <img className="overlay outline" src={this.state.bodyPart + '.png'} />
         </div>
         <div className="button-cluster">
+          <button onClick={this.undo.bind(this)}>Undo</button>
+          <button onClick={this.redo.bind(this)}>Redo</button>
+          <button onClick={this.clearCanvas.bind(this)}>Clear</button>
 
+          {/*<input style={{'marginRight': '20px'}} className="clearBtn" onClick={this.clearCanvas.bind(this)} type='button' value="Clear"></input>*/}
           <img style={{'backgroundColor': this.state.eColor, 'marginRight': '20px'}} onClick={this.onEraserClick.bind(this)} className="eraser" src="erasericon.png"></img>
           <img style={{'backgroundColor': this.state.dColor, 'marginRight': '20px'}} onClick={this.onDrawClick.bind(this)} className="drawBrush" src="brushicon.png"></img>
-          <input style={{'marginRight': '20px'}} className="clearBtn" onClick={this.clearCanvas.bind(this)} type='button' value="Clear"></input>
+          <select onChange={this.changePart.bind(this)}>
+            <option value="head">head</option>
+            <option value="torso">torso</option>
+            <option value="legs">legs</option>
+          </select>
+          <button id='doneButton' onClick={this.submitImage.bind(this)}>Done</button>
+          {/*<input onClick={this.submitImage.bind(this)} type="button" value="Done"/>*/}
           <span>Brush size: {this.state.brushWidth}</span>
           <input
             onChange={this.updateBrushWidth.bind(this)}
@@ -241,12 +249,7 @@ class DrawCanvas extends React.Component {
             type="range" min="5" max="25" step="1" />
         </div>
         <div className="button-cluster">
-          <select onChange={this.changePart.bind(this)}>
-            <option value="head">head</option>
-            <option value="torso">torso</option>
-            <option value="legs">legs</option>
-          </select>
-          <input onClick={this.submitImage.bind(this)} type="button" value="Done"/>
+
         </div>
       </div>
       )

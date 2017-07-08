@@ -2,7 +2,15 @@ body {
   margin: 0px;
   font-family: 'Work Sans', sans-serif;
   background-color: #fffdf9;
-  
+
+}
+
+button {
+  margin-right: 15px;
+}
+
+#doneButton {
+  margin-left: 15px;
 }
 
 .foreground {
@@ -157,7 +165,6 @@ canvas {
 .drawBrush:active {
   animation-name: highlight;
   animation-duration: 1s;
-  transition: ;
 }
 
 .eraser {
@@ -175,7 +182,6 @@ canvas {
 .eraser:active {
   animation-name: highlight;
   animation-duration: 1s;
-  transition: ;
 }
 
 .brushWidth {
@@ -199,7 +205,6 @@ canvas {
 
 .pic-part {
   max-width: 100%;
-  max-height: auto;
 }
 
 .true {
